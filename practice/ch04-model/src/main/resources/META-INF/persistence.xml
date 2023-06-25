@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <!-- 영속성 유닌. 일반적으로 연결할 데이터베이스 당 하나의 유닛을 등록. name: 유닛의 고유 이름 -->
+    <!-- 영속성 유닛. 일반적으로 연결할 데이터베이스 당 하나의 유닛을 등록. name: 유닛의 고유 이름 -->
     <persistence-unit name="jpabook">
         <!-- Gradle 환경에서 Spring Data 없이 JPA를 단독으로 사용하는 경우 엔티티를 자동으로 스캔하지 못해 class 태그로 추가해줘야 함-->
-        <class>jpabook.start.Member</class>
+        <class>jpabook.model.entity.Member</class>
+        <class>jpabook.model.entity.Order</class>
+        <class>jpabook.model.entity.OrderItem</class>
+        <class>jpabook.model.entity.Item</class>
 
         <properties>
 
