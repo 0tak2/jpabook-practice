@@ -1,4 +1,4 @@
 package org.otag.hellobd.admintui.entity;
 
-public class Role {
+public class UserPenalty {
 }
