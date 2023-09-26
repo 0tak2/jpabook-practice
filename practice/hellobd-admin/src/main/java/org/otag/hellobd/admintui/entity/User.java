@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -43,8 +45,10 @@ public class User {
     private RoleEnum role;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private LocalDateTime create_dt;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private LocalDateTime update_dt;
 }
