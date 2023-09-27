@@ -6,6 +6,7 @@
         <!-- Gradle 환경에서 Spring Data 없이 JPA를 단독으로 사용하는 경우 엔티티를 자동으로 스캔하지 못해 class 태그로 추가해줘야 함-->
         <class>org.otag.hellobd.admintui.entity.User</class>
         <class>org.otag.hellobd.admintui.entity.Board</class>
+        <class>org.otag.hellobd.admintui.entity.BoardAdmin</class>
         <class>org.otag.hellobd.admintui.entity.Article</class>
 
         <properties>

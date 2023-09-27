@@ -10,6 +10,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -45,6 +47,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
     private RoleEnum role;
+
+    @OneToMany(mappedBy = "admin")
+    private final Set<BoardAdmin> adminBoards = new HashSet<>();
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
