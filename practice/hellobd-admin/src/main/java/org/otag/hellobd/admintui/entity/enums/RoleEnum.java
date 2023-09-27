@@ -1,4 +1,4 @@
-package org.otag.hellobd.admintui.entity;
+package org.otag.hellobd.admintui.entity.enums;
 
 public enum RoleEnum {
     /* 일반 유저 */ USER,
