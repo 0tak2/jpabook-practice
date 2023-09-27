@@ -11,6 +11,7 @@
         <class>org.otag.hellobd.admintui.entity.ArticleLike</class>
         <class>org.otag.hellobd.admintui.entity.Comment</class>
         <class>org.otag.hellobd.admintui.entity.CommentLike</class>
+        <class>org.otag.hellobd.admintui.entity.Report</class>
 
         <properties>
 
