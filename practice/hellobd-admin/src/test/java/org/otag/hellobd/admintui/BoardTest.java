@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.junit.jupiter.api.Test;
 import org.otag.hellobd.admintui.entity.*;
 import org.otag.hellobd.admintui.entity.id.ArticleLikeId;
+import org.otag.hellobd.admintui.entity.id.CommentLikeId;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -166,7 +167,7 @@ public class BoardTest {
     }
 
     @Test
-    public void 게시글좋아요() {
+    public void 게시글_댓글_좋아요() {
         EntityManagerFactory emf =
                 Persistence.createEntityManagerFactory("hellobd-admintui");
 
@@ -219,11 +220,21 @@ public class BoardTest {
                 .build();
         em.persist(articleLike);
 
+        // 게시글 좋아요
+        CommentLike commentLike = CommentLike.builder()
+                .comment(comment)
+                .user(user)
+                .build();
+        em.persist(commentLike);
+
         // 테스트
         ArticleLike foundArticleLike = em.find(ArticleLike.class, new ArticleLikeId(article.getId(), user.getId()));
-
         assertEquals(foundArticleLike.getArticle(), article);
         assertEquals(foundArticleLike.getUser(), user);
+
+        CommentLike founcCommentLike = em.find(CommentLike.class, new CommentLikeId(comment.getId(), user.getId()));
+        assertEquals(founcCommentLike.getComment(), comment);
+        assertEquals(founcCommentLike.getUser(), user);
 
         tx.commit();
         em.close();
