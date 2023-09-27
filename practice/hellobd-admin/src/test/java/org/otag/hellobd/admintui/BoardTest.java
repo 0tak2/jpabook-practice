@@ -101,7 +101,7 @@ public class BoardTest {
                 .isHidden(false)
                 .build();
         article.getComments().add(comment); // 양방향
-        em.persist(article);
+        em.persist(comment);
 
         // 댓글 조회
         Article foundArticle = em.find(Article.class, article.getId());
@@ -211,7 +211,7 @@ public class BoardTest {
                 .isHidden(false)
                 .build();
         article.getComments().add(comment); // 양방향
-        em.persist(article);
+        em.persist(comment);
 
         // 게시글 좋아요
         ArticleLike articleLike = ArticleLike.builder()
