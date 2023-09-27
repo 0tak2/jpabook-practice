@@ -2,10 +2,7 @@ package org.otag.hellobd.admintui;
 
 import jakarta.persistence.*;
 import org.junit.jupiter.api.Test;
-import org.otag.hellobd.admintui.entity.Article;
-import org.otag.hellobd.admintui.entity.Board;
-import org.otag.hellobd.admintui.entity.BoardAdmin;
-import org.otag.hellobd.admintui.entity.User;
+import org.otag.hellobd.admintui.entity.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -51,6 +48,66 @@ public class BoardTest {
         assertEquals(em.find(Article.class, article.getId()), article);
         assertEquals(em.find(User.class, article.getAuthor().getId()), user);
         assertEquals(em.find(Board.class, article.getBoard().getId()), board);
+
+        tx.commit();
+        em.close();
+        emf.close();
+    }
+
+    @Test
+    public void 댓글저장() {
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory("hellobd-admintui");
+
+        EntityManager em = emf.createEntityManager();
+
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin();
+
+        // 유저 저장
+        User user = User.builder()
+                .username("테스트")
+                .isActive(true)
+                .build();
+        em.persist(user);
+
+        // 게시판 저장
+        Board board = Board.builder()
+                .name("테스트")
+                .description("테스트")
+                .build();
+        em.persist(board);
+
+        // 게시글 저장
+        Article article = Article.builder()
+                .author(user)
+                .board(board)
+                .title("테스트")
+                .content("테스트")
+                .isHidden(false)
+                .viewCount(0L)
+                .build();
+        board.getArticles().add(article); // 양방향
+        em.persist(article);
+
+        // 댓글 저장
+        Comment comment = Comment.builder()
+                .author(user)
+                .article(article)
+                .content("테스트")
+                .isHidden(false)
+                .build();
+        article.getComments().add(comment); // 양방향
+        em.persist(article);
+
+        // 댓글 조회
+        Article foundArticle = em.find(Article.class, article.getId());
+        Comment foundComment = null;
+        for (Comment c : foundArticle.getComments()) {
+            foundComment = c;
+        }
+        assertEquals(foundComment, comment);
 
         tx.commit();
         em.close();

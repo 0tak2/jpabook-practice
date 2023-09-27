@@ -8,6 +8,7 @@
         <class>org.otag.hellobd.admintui.entity.Board</class>
         <class>org.otag.hellobd.admintui.entity.BoardAdmin</class>
         <class>org.otag.hellobd.admintui.entity.Article</class>
+        <class>org.otag.hellobd.admintui.entity.Comment</class>
 
         <properties>
 
