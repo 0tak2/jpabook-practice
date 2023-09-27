@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Check;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,13 +17,14 @@ import java.util.UUID;
 @Builder
 @Getter
 @Entity(name = "Users")
+@Table(indexes = @Index(columnList = "username"))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
     private UUID id;
 
-    @Column(length = 48)
+    @Column(length = 48, unique = true)
     private String username;
 
     @Column(length = 128)
@@ -31,7 +33,7 @@ public class User {
     @Column(length = 48)
     private String name;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Temporal(TemporalType.TIMESTAMP)
