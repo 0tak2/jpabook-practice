@@ -15,6 +15,8 @@ dependencies {
     implementation("org.hibernate:hibernate-core:6.3.1.Final")
     implementation("com.h2database:h2:2.2.224")
     implementation("org.springframework.security:spring-security-crypto:6.1.4")
+    implementation("org.springframework:spring-core:6.0.12")
+    implementation("org.springframework:spring-context:6.0.12")
 
     testCompileOnly ("org.projectlombok:lombok:1.18.30")
     testAnnotationProcessor ("org.projectlombok:lombok:1.18.30")
