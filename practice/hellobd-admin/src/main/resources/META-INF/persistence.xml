@@ -12,6 +12,7 @@
         <class>org.otag.hellobd.admintui.entity.Comment</class>
         <class>org.otag.hellobd.admintui.entity.CommentLike</class>
         <class>org.otag.hellobd.admintui.entity.Report</class>
+        <class>org.otag.hellobd.admintui.entity.UserPenalty</class>
 
         <properties>
 

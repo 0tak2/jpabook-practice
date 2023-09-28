@@ -119,6 +119,16 @@ public class UserTest {
 
         em.persist(commentReport);
 
+        // 유저 페널티 추가
+        UserPenalty userPenalty = UserPenalty.builder()
+                .user(reported)
+                .increment(1)
+                .count(1)
+                .description("테스트")
+                .report(commentReport)
+                .build();
+        em.persist(userPenalty);
+
         // 테스트
         Report foundArticleReport = em.find(Report.class, articleReport.getId());
         assertEquals(foundArticleReport.getDescription(), "게시글 신고 테스트 - 유저 측 설명");
