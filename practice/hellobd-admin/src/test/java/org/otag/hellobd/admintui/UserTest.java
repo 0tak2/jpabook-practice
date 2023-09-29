@@ -9,12 +9,45 @@ import org.otag.hellobd.admintui.entity.*;
 import org.otag.hellobd.admintui.entity.enums.ReportStatusEnum;
 import org.otag.hellobd.admintui.entity.enums.ReportTargetEnum;
 import org.otag.hellobd.admintui.entity.enums.ReportTypeEnum;
+import org.otag.hellobd.admintui.entity.enums.RoleEnum;
 import org.otag.hellobd.admintui.entity.id.ArticleLikeId;
 import org.otag.hellobd.admintui.entity.id.CommentLikeId;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTest {
+    @Test
+    public void 어드민_유저_저장() {
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory("hellobd-admintui");
+
+        EntityManager em = emf.createEntityManager();
+
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin();
+
+        User user = User.builder()
+                .username("테스트")
+                .password(BCrypt.hashpw("1111", BCrypt.gensalt()))
+                .name("관리자")
+                .email("admin@hellobd.org")
+                .birthday(LocalDateTime.of(2000, 1, 1, 0, 0))
+                .isActive(true)
+                .role(RoleEnum.SYS_ADMIN)
+                .build();
+        em.persist(user);
+
+        assertEquals(em.find(User.class, user.getId()), user);
+
+        tx.commit();
+        em.close();
+        emf.close();
+    }
+
     @Test
     public void user저장테스트() {
         EntityManagerFactory emf =
