@@ -4,5 +4,11 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:META-INF/config.properties" />
+
     <context:component-scan base-package="org.otag.hellobd.admintui" />
+
+    <bean id="global" class="org.otag.hellobd.admintui.Global">
+        <constructor-arg value="${user.salt}"/>
+    </bean>
 </beans>
