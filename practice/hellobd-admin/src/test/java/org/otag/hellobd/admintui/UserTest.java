@@ -31,8 +31,8 @@ public class UserTest {
         tx.begin();
 
         User user = User.builder()
-                .username("테스트")
-                .password(BCrypt.hashpw("1111", BCrypt.gensalt()))
+                .username("admin")
+                .password(BCrypt.hashpw("1111", "hellobd"))
                 .name("관리자")
                 .email("admin@hellobd.org")
                 .birthday(LocalDateTime.of(2000, 1, 1, 0, 0))
