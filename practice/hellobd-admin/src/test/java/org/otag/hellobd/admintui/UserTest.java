@@ -30,9 +30,12 @@ public class UserTest {
 
         tx.begin();
 
+        String salt = BCrypt.gensalt();
+        System.out.println("SALT: " + salt);
+
         User user = User.builder()
                 .username("admin")
-                .password(BCrypt.hashpw("1111", "hellobd"))
+                .password(BCrypt.hashpw("1111", salt))
                 .name("관리자")
                 .email("admin@hellobd.org")
                 .birthday(LocalDateTime.of(2000, 1, 1, 0, 0))
