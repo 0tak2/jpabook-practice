@@ -8,6 +8,9 @@ import org.otag.hellobd.admintui.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+
 @Component
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -31,5 +34,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public void logout() {
         global.setLoginedUser(null);
+    }
+
+    @Override
+    public void createUser(Map<String, Object> form) {
+        String salt = global.getUserSalt();
+
+        User user = User.builder()
+                .username((String)form.get("username"))
+                .password(BCrypt.hashpw((String)form.get("password"), salt))
+                .name((String)form.get("name"))
+                .email((String)form.get("email"))
+                .birthday((LocalDateTime) form.get("birthday"))
+                .isActive((Boolean)form.get("isActive"))
+                .role((RoleEnum)form.get("role"))
+                .build();
+
+        repository.insert(user);
     }
 }

@@ -23,18 +23,26 @@ public class MainController {
 
             try {
                 switch (cmd) {
-                    case "l":
+                    case "login":
                         userController.loginOrLogout();
                         break;
-                    case "h":
-                        System.out.println("도움말");
-                        System.out.println("l: 로그인 또는 로그아웃");
-                        System.out.println("q: 종료");
+                    case "create user":
+                        userController.createUser();
                         break;
-                    case "q":
+                    case "list user":
+                        userController.loginOrLogout();
+                        break;
+                    case "help":
+                        System.out.println("도움말");
+                        System.out.println("login: 로그인 또는 로그아웃");
+                        System.out.println("create user: 유저 등록");
+                        System.out.println("list user: 유저 조회");
+                        System.out.println("quit: 종료");
+                        break;
+                    case "quit":
                         break MAIN;
                     default:
-                        System.out.println("다시 입력해주세요. 도움말을 보려면 h를 입력하세요.");
+                        System.out.println("다시 입력해주세요. 도움말을 보려면 help를 입력하세요.");
                         break;
                 }
             } catch (RuntimeException re) {
