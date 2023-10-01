@@ -2,6 +2,7 @@ package org.otag.hellobd.admintui.service;
 
 import org.otag.hellobd.admintui.entity.User;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserService {
@@ -10,4 +11,6 @@ public interface UserService {
     void logout();
 
     void createUser(Map<String, Object> form);
+
+    List<User> getUserList();
 }

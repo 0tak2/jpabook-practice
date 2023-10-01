@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -86,5 +87,14 @@ public class UserController {
         form.put("role", role);
 
         service.createUser(form);
+    }
+
+    public void listUser() {
+        User user = global.getLoginedUser();
+        if (user == null) throw new RuntimeException("로그인이 필요한 작업입니다.");
+
+        List<User> userList = service.getUserList();
+
+        userList.forEach(System.out::println);
     }
 }

@@ -30,7 +30,7 @@ public class MainController {
                         userController.createUser();
                         break;
                     case "list user":
-                        userController.loginOrLogout();
+                        userController.listUser();
                         break;
                     case "help":
                         System.out.println("도움말");

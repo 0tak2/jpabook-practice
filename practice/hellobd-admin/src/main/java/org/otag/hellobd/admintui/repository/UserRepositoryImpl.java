@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.otag.hellobd.admintui.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -29,5 +30,11 @@ public class UserRepositoryImpl implements UserRepository {
         tx.begin();
         em.persist(user);
         tx.commit();
+    }
+
+    @Override
+    public List<User> selectList() {
+        return em.createQuery("select u from Users u", User.class)
+                .getResultList();
     }
 }

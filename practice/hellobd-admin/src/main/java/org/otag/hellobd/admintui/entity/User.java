@@ -1,10 +1,7 @@
 package org.otag.hellobd.admintui.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.otag.hellobd.admintui.entity.enums.RoleEnum;
@@ -18,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Getter
+@ToString(exclude = "adminBoards")
 @Entity(name = "Users")
 @Table(indexes = @Index(columnList = "username"))
 public class User {

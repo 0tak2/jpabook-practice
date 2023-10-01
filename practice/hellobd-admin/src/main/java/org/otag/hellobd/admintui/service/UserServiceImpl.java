@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -51,5 +52,10 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         repository.insert(user);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return repository.selectList();
     }
 }
