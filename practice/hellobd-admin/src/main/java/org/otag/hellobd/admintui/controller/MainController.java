@@ -24,6 +24,7 @@ public class MainController {
             try {
                 switch (cmd) {
                     case "login":
+                    case "logout":
                         userController.loginOrLogout();
                         break;
                     case "create user":
@@ -34,11 +35,12 @@ public class MainController {
                         break;
                     case "help":
                         System.out.println("도움말");
-                        System.out.println("login: 로그인 또는 로그아웃");
+                        System.out.println("login/logout: 로그인 또는 로그아웃");
                         System.out.println("create user: 유저 등록");
                         System.out.println("list user: 유저 조회");
                         System.out.println("quit: 종료");
                         break;
+                    case "exit":
                     case "quit":
                         break MAIN;
                     default:
