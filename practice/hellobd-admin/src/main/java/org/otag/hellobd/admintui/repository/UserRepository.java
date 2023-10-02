@@ -11,4 +11,6 @@ public interface UserRepository {
     void insert(User user);
 
     List<User> selectList();
+
+    Optional<User> findByUsername(String username);
 }

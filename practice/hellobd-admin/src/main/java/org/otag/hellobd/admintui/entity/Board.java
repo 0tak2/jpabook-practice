@@ -1,10 +1,7 @@
 package org.otag.hellobd.admintui.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -31,6 +28,9 @@ public class Board {
 
     @OneToMany(mappedBy = "board")
     private final Set<Article> articles = new HashSet<>();
+
+    @OneToMany(mappedBy = "board")
+    private final Set<BoardAdmin> boardAdmins = new HashSet<>();
 
     @Column
     @Temporal(TemporalType.TIMESTAMP)

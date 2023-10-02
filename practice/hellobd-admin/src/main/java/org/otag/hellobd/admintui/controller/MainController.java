@@ -2,6 +2,7 @@ package org.otag.hellobd.admintui.controller;
 
 import lombok.AllArgsConstructor;
 import org.otag.hellobd.admintui.Global;
+import org.otag.hellobd.admintui.entity.Board;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -11,8 +12,9 @@ import java.io.InputStreamReader;
 @Component
 @AllArgsConstructor
 public class MainController {
-    BufferedReader br;
-    UserController userController;
+    private final BufferedReader br;
+    private final UserController userController;
+    private final BoardController boardController;
 
     public void mainMenu() throws IOException {
         System.out.println("헬로우 보드");
@@ -33,11 +35,15 @@ public class MainController {
                     case "list user":
                         userController.listUser();
                         break;
+                    case "create board":
+                        boardController.createBoard();
+                        break;
                     case "help":
                         System.out.println("도움말");
                         System.out.println("login/logout: 로그인 또는 로그아웃");
                         System.out.println("create user: 유저 등록");
                         System.out.println("list user: 유저 조회");
+                        System.out.println("create board: 게시판 생성");
                         System.out.println("quit: 종료");
                         break;
                     case "exit":
