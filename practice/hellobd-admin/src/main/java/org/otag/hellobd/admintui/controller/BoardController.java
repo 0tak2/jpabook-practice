@@ -2,6 +2,7 @@ package org.otag.hellobd.admintui.controller;
 
 import lombok.AllArgsConstructor;
 import org.otag.hellobd.admintui.Global;
+import org.otag.hellobd.admintui.entity.Board;
 import org.otag.hellobd.admintui.entity.User;
 import org.otag.hellobd.admintui.service.BoardService;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor
@@ -37,5 +39,14 @@ public class BoardController {
         service.createBoard(form);
 
         System.out.println("\"" + form.get("name") + "\" 게시판이 생성되었습니다.");
+    }
+
+    public void listBoard() {
+        User user = global.getLoginedUser();
+        if (user == null) throw new RuntimeException("로그인이 필요한 작업입니다.");
+
+        List<Board> boardList = service.getBoardList();
+
+        boardList.forEach(System.out::println);
     }
 }

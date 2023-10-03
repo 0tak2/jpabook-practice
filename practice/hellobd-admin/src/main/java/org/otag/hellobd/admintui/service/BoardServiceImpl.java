@@ -11,10 +11,7 @@ import org.otag.hellobd.admintui.repository.BoardRepository;
 import org.otag.hellobd.admintui.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -57,5 +54,10 @@ public class BoardServiceImpl implements BoardService {
         board.getBoardAdmins().addAll(boardAdmins);
 
         tx.commit();
+    }
+
+    @Override
+    public List<Board> getBoardList() {
+        return boardRepository.selectAllBoard();
     }
 }

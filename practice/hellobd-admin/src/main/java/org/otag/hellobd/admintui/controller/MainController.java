@@ -38,12 +38,16 @@ public class MainController {
                     case "create board":
                         boardController.createBoard();
                         break;
+                    case "list board":
+                        boardController.listBoard();
+                        break;
                     case "help":
                         System.out.println("도움말");
                         System.out.println("login/logout: 로그인 또는 로그아웃");
                         System.out.println("create user: 유저 등록");
                         System.out.println("list user: 유저 조회");
                         System.out.println("create board: 게시판 생성");
+                        System.out.println("list board: 게시판 조회");
                         System.out.println("quit: 종료");
                         break;
                     case "exit":

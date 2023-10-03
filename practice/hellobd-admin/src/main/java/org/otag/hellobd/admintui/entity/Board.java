@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Getter
+@ToString(exclude = {"articles"})
 @Entity
 public class Board {
     @Id
