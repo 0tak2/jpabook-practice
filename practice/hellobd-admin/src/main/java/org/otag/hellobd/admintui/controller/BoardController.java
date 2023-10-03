@@ -49,4 +49,9 @@ public class BoardController {
 
         boardList.forEach(System.out::println);
     }
+
+    public void selectBoard(long boardId) {
+        service.selectBoard(boardId);
+        System.out.println(boardId + "번 게시판이 선택되었습니다.");
+    }
 }

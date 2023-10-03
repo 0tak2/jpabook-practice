@@ -3,6 +3,7 @@ package org.otag.hellobd.admintui.service;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import lombok.AllArgsConstructor;
+import org.otag.hellobd.admintui.Global;
 import org.otag.hellobd.admintui.entity.Board;
 import org.otag.hellobd.admintui.entity.BoardAdmin;
 import org.otag.hellobd.admintui.entity.User;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @Component
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
+    Global global;
     EntityManager em;
     BoardRepository boardRepository;
     UserRepository userRepository;
@@ -59,5 +61,13 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public List<Board> getBoardList() {
         return boardRepository.selectAllBoard();
+    }
+
+    @Override
+    public void selectBoard(long boardId) {
+        Board board = boardRepository.findById(boardId)
+                .orElseThrow(() -> new RuntimeException("입력한 아이디의 게시판을 찾을 수 없습니다."));
+
+        global.setSelectedBoard(board);
     }
 }

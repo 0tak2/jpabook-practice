@@ -5,6 +5,7 @@ import org.otag.hellobd.admintui.entity.Board;
 import org.otag.hellobd.admintui.entity.BoardAdmin;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BoardRepository {
     void insert(Board board);
@@ -12,4 +13,6 @@ public interface BoardRepository {
     void insertAdmin(BoardAdmin boardAdmin);
 
     List<Board> selectAllBoard();
+
+    Optional<Board> findById(long boardId);
 }

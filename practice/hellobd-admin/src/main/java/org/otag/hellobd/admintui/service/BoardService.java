@@ -9,4 +9,6 @@ public interface BoardService {
     void createBoard(Map<String, Object> form);
 
     List<Board> getBoardList();
+
+    void selectBoard(long boardId);
 }
