@@ -61,6 +61,9 @@ public class MainController {
                         if (arg == null) throw new RuntimeException("게시판 번호가 없습니다.");
                         boardController.selectBoard(Long.parseLong(arg));
                         break;
+                    case "create article":
+                        boardController.createArticle();
+                        break;
                     case "help":
                         System.out.println("도움말");
                         System.out.println("login/logout: 로그인 또는 로그아웃");
@@ -70,6 +73,7 @@ public class MainController {
                         System.out.println("create board: 게시판 생성");
                         System.out.println("list board: 게시판 조회");
                         System.out.println("select board N: N번 게시판 선택");
+                        System.out.println("create article: 게시글 생성");
                         System.out.println("quit: 종료");
                         break;
                     case "exit":

@@ -1,6 +1,7 @@
 package org.otag.hellobd.admintui.service;
 
 import org.otag.hellobd.admintui.entity.Board;
+import org.otag.hellobd.admintui.entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -10,5 +11,7 @@ public interface BoardService {
 
     List<Board> getBoardList();
 
-    void selectBoard(long boardId);
+    Board selectBoard(long boardId);
+
+    void createArticle(User author, Board board, Map<String, Object> form);
 }

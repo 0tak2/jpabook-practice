@@ -51,7 +51,28 @@ public class BoardController {
     }
 
     public void selectBoard(long boardId) {
-        service.selectBoard(boardId);
+        Board board = service.selectBoard(boardId);
+        global.setSelectedBoard(board);
         System.out.println(boardId + "번 게시판이 선택되었습니다.");
+    }
+
+    public void createArticle() throws IOException {
+        User user = global.getLoginedUser();
+        if (user == null) throw new RuntimeException("로그인이 필요한 작업입니다.");
+
+        Board selectedBoard = global.getSelectedBoard();
+        if (selectedBoard == null) throw new RuntimeException("선택된 게시판이 없습니다. select board N 명령으로 게시판을 선택할 수 있습니다.");
+
+        Map<String, Object> form = new HashMap<>();
+
+        System.out.println("게시글 제목: ");
+        form.put("title", br.readLine());
+
+        System.out.println("게시글 내용: ");
+        form.put("content", br.readLine());
+
+        service.createArticle(user, selectedBoard, form);
+
+        System.out.println("\"" + form.get("title") + "\" 게시글이 생성되었습니다.");
     }
 }

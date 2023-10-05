@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import lombok.AllArgsConstructor;
+import org.otag.hellobd.admintui.entity.Article;
 import org.otag.hellobd.admintui.entity.Board;
 import org.otag.hellobd.admintui.entity.BoardAdmin;
 import org.springframework.stereotype.Component;
@@ -41,5 +42,10 @@ public class BoardRepositoryImpl implements BoardRepository {
         }
 
         return Optional.ofNullable(board);
+    }
+
+    @Override
+    public void insertArticle(Article article) {
+        em.persist(article);
     }
 }

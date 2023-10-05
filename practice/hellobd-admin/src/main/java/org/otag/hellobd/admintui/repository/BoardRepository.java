@@ -1,6 +1,7 @@
 package org.otag.hellobd.admintui.repository;
 
 import jakarta.persistence.EntityTransaction;
+import org.otag.hellobd.admintui.entity.Article;
 import org.otag.hellobd.admintui.entity.Board;
 import org.otag.hellobd.admintui.entity.BoardAdmin;
 
@@ -15,4 +16,6 @@ public interface BoardRepository {
     List<Board> selectAllBoard();
 
     Optional<Board> findById(long boardId);
+
+    void insertArticle(Article article);
 }
